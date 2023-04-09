@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.uniproject.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.uniproject.pojo.User">
+            <id property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="userSex" column="user_sex" jdbcType="VARCHAR"/>
+            <result property="userAvatar" column="user_avatar" jdbcType="VARCHAR"/>
+            <result property="userTel" column="user_tel" jdbcType="VARCHAR"/>
+            <result property="userPwd" column="user_pwd" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_id,user_name,user_sex,
+        user_avatar,user_tel,user_pwd
+    </sql>
+    <insert id="save" parameterType="com.example.uniproject.pojo.User">
+        insert into user(user_tel,user_pwd)
+        values
+        (#{userTel}, #{userPwd})
+    </insert>
+    <select id="selectByUserTel" resultType="com.example.uniproject.pojo.User">
+        SELECT * FROM user WHERE user_tel = #{userTel}
+    </select>
+</mapper>
